@@ -1,7 +1,10 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
+from product.models import Product
 # Create your views here.
 
-def sun (request):
-    return HttpResponse('Hello Amina')
+def product_list(request):
+    products = Product.objects.all()
+    return render(request,
+                'index.html',
+                context={'products': products}
+                )
